@@ -73,7 +73,7 @@
 
                     <ul>
                         <li><a href="/logout">Logout</a></li>
-                        <li><a href="https://sourceforge.net/p/malimedialima/tickets/" target="_blank">File a bug</a></li>
+                        <li><a href="https://github.com/Malimediagroup/LiMA/issues" target="_blank">File a bug</a></li>
 <!--!
                         <li><a href="/settings">Settings</a></li>
 -->

@@ -15,7 +15,7 @@
                 <li><a href="http://ldap.malimedia.be" title="OpenLDAP" target="_blank">OpenLDAP</a></li>
                 <li><a href="http://www.malimedia.be:10000" title="WebMin" target="_blank">WebMin</a></li>
                 <li><a href="https://malimediagroup.teamworkpm.net" title="TeamWork Project Manager" target="_blank">TeamWork Project Manager</a></li>
-                <li><a href="https://sourceforge.net/p/malimedialima/tickets/" title="SourceForge" target="_blank">File a bug</a></li>
+                <li><a href="https://github.com/Malimediagroup/LiMA/issues" title="SourceForge" target="_blank">File a bug</a></li>
             </ul>
             <h4>Websites</h4>
             <ul>
