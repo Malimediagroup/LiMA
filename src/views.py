@@ -76,8 +76,8 @@ def sortedDictValues3(adict):
              renderer   ='templates/index.html.pt',
              permission ='admin')
 def home_view(request):
-    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     return {
         'Ezines'    : ezines,
         'Auctions'  : auctions,
@@ -87,8 +87,8 @@ def home_view(request):
              renderer='templates/index.html.pt',
              permission='admin')
 def Dashboard_view(request):
-    ezines = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    ezines = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     return {
         'Ezines'    : ezines,
         'Auctions'  : auctions,
@@ -99,9 +99,9 @@ def Dashboard_view(request):
              renderer='templates/EzineManager/home.html.pt',
              permission='admin')
 def EzineManager_view(request):
-    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
-    reports     = DBSession.query(ClangMailjetSyncReport).order_by(desc(ClangMailjetSyncReport.cid))
+    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50).limit(50)
+    reports     = DBSession.query(ClangMailjetSyncReport).order_by(desc(ClangMailjetSyncReport.cid)).limit(10)
     return {
         'Ezines'    : ezines,
         'Auctions'  : auctions,
@@ -114,7 +114,7 @@ def EzineManager_view(request):
              renderer='templates/AuctionManager/home.html.pt',
              permission='admin')
 def AuctionManager_view(request):
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     return {
         'Auctions'  : auctions,
         'c_data'    : False,
@@ -124,7 +124,7 @@ def AuctionManager_view(request):
              renderer='templates/customermanager.html.pt',
              permission='admin')
 def CustomerManager_view(request):
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     return {
         'Auctions'  : auctions,
         'c_data'    : False,
@@ -177,7 +177,7 @@ def AuctionManager_auction_view(request):
              permission='admin')
 def auction_view_view(request):
     id = request.matchdict['id']
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     auction     = DBSession.query(Auction).filter(Auction.cid==id).first()
     return {
         'Auctions'    : auctions,
@@ -277,8 +277,8 @@ def ezine_view(request):
              permission='admin')
 def ezine_view_view(request):
     id = request.matchdict['id']
-    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     ezine       = DBSession.query(Ezine).filter(Ezine.cid==id).first()
     return {
         'Ezines'    : ezines,
@@ -291,8 +291,8 @@ def ezine_view_view(request):
              permission='admin')
 def content_view_view(request):
     id = request.matchdict['id']
-    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     auction     = DBSession.query(Auction).filter(Auction.cid==id).first()
     return {
         'Ezines'    : ezines,
@@ -307,8 +307,8 @@ def content_view_view(request):
              xhr=True)
 def content_view_view_xhr(request):
     id = request.matchdict['id']
-    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
-    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid))
+    ezines      = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
+    auctions    = DBSession.query(Auction).order_by(desc(Auction.cid)).limit(50)
     auction     = DBSession.query(Auction).filter(Auction.cid==id).first()
     return {
         'Ezines'    : ezines,
@@ -338,7 +338,7 @@ def content_view_view_xhr(request):
              permission='admin')
 def ezine_crud_view_view(request):
     id = request.matchdict['id']
-    ezines = DBSession.query(Ezine).order_by(desc(Ezine.send_date))
+    ezines = DBSession.query(Ezine).order_by(desc(Ezine.send_date)).limit(50)
     ezine = DBSession.query(Ezine).filter(Ezine.cid==id).first()
     debug = False
     ezine_file = '.'.join((ezine.name.lower(), 'html'))
