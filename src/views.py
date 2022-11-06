@@ -598,6 +598,32 @@ def action_view_xhr(request):
         else:
             log.debug('Sending test via mailjet not selected.')
 
+        # upload to Clang?
+        if 'opt_toclang' in p:
+            # Render ezine to html first
+            render_ezine(ezine, 'clang')
+            log.info('Uploading "{n}" to Clang...'.format(n=ezine.name))
+            debug = False
+            ezine_file = '.'.join((ezine.name.lower(), 'html'))
+            try:
+                r = Runner(request)
+                r.main(ezine)
+            except Exception as e:
+                response += e.message + '\n'
+                clang_ok = False
+            else:
+                clang_ok = True
+                response += 'Ezine "{n}" werd gepremailed en geüpload '\
+                             'naar Clang.\nTest werd verzonden naar '\
+                             'GroepID "4".'.format(n=ezine.name)
+        else:
+            log.debug('Upload to Clang not selected.')
+
+        if 'opt_sendtestclang' in p and clang_ok:
+            log.debug('Sending test via clang...')
+        else:
+            log.debug('Not sending test via clang...')
+
     log.debug('Response sent to browser: '
                '"{r}"'.format(r=response.replace('\n', ' ')))
 
