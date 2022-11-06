@@ -89,7 +89,7 @@
                     <tr>
                         <th>Emailaddress <img src="http://static-mmg.s3.eu-central-1.amazonaws.com/img/icons/famfam/email.png" alt="" title="Emailaddress" /></th>
                         <td colspan="3">
-                            <input type="text" tal:attributes="id '_'.join( ('testaddress', fid) )" name="testaddress" disabled="false" value="maartendeschrijver@gmail.com" data-dojo-type="dijit/form/ValidationTextBox" />
+                            <input type="text" tal:attributes="id '_'.join( ('testaddress', fid) )" name="testaddress" disabled="false" value="example@example.com" data-dojo-type="dijit/form/ValidationTextBox" />
                         </td>
                     </tr>
             </tbody>
