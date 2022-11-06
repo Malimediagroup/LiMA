@@ -73,6 +73,8 @@ class Mailjet:
     def __init__(self, request=None):
         """init"""
         self.request    = request
+        # List_id is taken from the environment config ini-file, eg.,
+        # production.ini
         self.LIST_ID    = self.request.registry.settings['list_id']
         # Open client
         log.debug('Init Mailjet API...')
