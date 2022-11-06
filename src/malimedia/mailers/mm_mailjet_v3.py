@@ -201,7 +201,7 @@ class Mailjet:
             'Name' : 'Jan Met De Pet',
         }
         try:
-            resp = self.mapi.newsletter_test(id=campaign_id, data=data)
+            resp = self.mapi.campaigndraft_test.create(id=campaign_id, data=data)
         except Exception as e:
             log.error(e)
             raise e
