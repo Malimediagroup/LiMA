@@ -116,7 +116,10 @@ class Mailjet:
         return match_list
 
     def upload(self, ezine):
-        """"""
+        """
+        Creates a campaign in Mailjet and uploads a html- and text-version of
+        the e-zine.
+        """
         # create campaign
         log.debug('Ezine params: subject = {s} - name = {n}'.format(s=ezine.subject, n=ezine.name))
         log.debug(ezine.subject)
@@ -188,7 +191,9 @@ class Mailjet:
         return campaign_id
 
     def send_test(self, campaign_id, email):
-        """"""
+        """
+        Send test to a single emailaddress for a certain campaign.
+        """
         data = {
             'Email' : email,
             'Name' : 'Jan Met De Pet',
@@ -203,7 +208,8 @@ class Mailjet:
         return True
 
     def unsub_contact(self, email, list_id='3jNz'):
-        """"""
+        """
+        """
         params = {
             'method'    : 'POST',
             'contact'   : email,
