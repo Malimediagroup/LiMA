@@ -73,20 +73,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Clang <img src="http://static-mmg.s3.eu-central-1.amazonaws.com/img/icons/other/clang.png" alt="" title="Clang" /></th>
-                        <td>
-                            <label for="opt_toclang" title="Upload">Upload
-                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_toclang', fid) )" name="opt_toclang" disabled="false" checked="true" data-dojo-type="dijit/form/CheckBox" /></label>
-                        </td>
-                        <td>
-                            <label for="opt_sendtestclang" title="Send test">Send test
-                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_sendtestclang', fid) )" name="opt_sendtestclang" title="Send test" disabled="false" checked="true" data-dojo-type="dijit/form/CheckBox" /></label>
-                        </td>
-                        <td>
-                            <div data-dojo-type="dijit/ProgressBar" style="width:150px; display: none" data-dojo-id="clangProgressBar" id="clangProgressBar" data-dojo-props="maximum:10"></div>
-                        </td>
-                    </tr>
-                    <tr>
                         <th>Emailaddress <img src="http://static-mmg.s3.eu-central-1.amazonaws.com/img/icons/famfam/email.png" alt="" title="Emailaddress" /></th>
                         <td colspan="3">
                             <input type="text" tal:attributes="id '_'.join( ('testaddress', fid) )" name="testaddress" disabled="false" value="example@example.com" data-dojo-type="dijit/form/ValidationTextBox" />
