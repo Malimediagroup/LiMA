@@ -123,27 +123,27 @@ class Mailjet:
         the e-zine.
         """
         # create campaign
-        log.debug('Ezine params: subject = {s} - name = {n}'.format(s=ezine.subject, n=ezine.name))
+        log.info('Creating campaign for: subject = {s} - name = {n}'.format(s=ezine.subject, n=ezine.name))
         log.debug(ezine.subject)
         log.debug('subject type: {t}'.format(t=type(ezine.subject)))
         data = {
-          'Locale': 'nl_NL',
-          'Sender': 'Biedmee.be | Veilingen',
-          'SenderName': 'Biedmee.be | Veilingen',
-          'SenderEmail': 'veilingen@biedmee.be',
-          'ReplyEmail': 'veilingen@biedmee.be',
-          'Subject': ezine.subject,
-          'ContactsListID': self.LIST_ID,
-          'Title': ezine.name,
-          'EditMode': 'html',
-          'EditType': 'full',
+            'Locale': "nl_NL",
+            'SenderName': "Biedmee.be | Veilingen",
+            'SenderEmail': "veilingen@biedmee.be",
+            'ReplyEmail': "veilingen@biedmee.be",
+            'EditMode': "html2",
+            'IsStarred': "false",
+            'IsTextPartIncluded': "true",
+            'ContactsListID': self.LIST_ID,
+            'Title': ezine.name,
+            'Subject': ezine.subject
         }
         log.debug(data)
         match_list = self._check_existing_newsletters(ezine)
         if not match_list:
             log.info(u'No matching campaign found in "drafts": creating new '
                       'campaign')
-            resp = self.mapi.newsletter.create(data=data)
+            resp = self.mapi.campaigndraft.create(data=data)
             if resp.status_code != 201:
                 log.error(u'CreateCampaign failed with code %s: "%s".',
                           str(resp.status_code), resp.json()['ErrorInfo'] or resp.json()['ErrorMessage'])
@@ -172,7 +172,7 @@ class Mailjet:
         }
         log.debug('sethtmlcampaign for campaign_id: {i}'.format(i=campaign_id))
         try:
-            result = self.mapi.newsletter_detailcontent.update(id=campaign_id, data=data)
+            result = self.mapi.campaigndraft_detailcontent.create(id=campaign_id, data=data)
         except UnicodeEncodeError as e:
             log.debug(e)
             data = {
@@ -180,7 +180,7 @@ class Mailjet:
               'Text-part': ezine.txt.encode('utf8'),
             }
             try:
-                result = self.mapi.newsletter_detailcontent.create(id=campaign_id, data=data)
+                result = self.mapi.campaigndraft_detailcontent.create(id=campaign_id, data=data)
             except UnicodeEncodeError as e:
                 log.error(e)
                 raise e
