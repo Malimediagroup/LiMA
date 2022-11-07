@@ -72,15 +72,15 @@
                             <div data-dojo-type="dijit/ProgressBar" style="width:150px; display: none" data-dojo-id="mailjetProgressBar" id="mailjetProgressBar" data-dojo-props="maximum:10"></div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display: none;">
                         <th>Clang <img src="http://static-mmg.s3.eu-central-1.amazonaws.com/img/icons/other/clang.png" alt="" title="Clang" /></th>
                         <td>
                             <label for="opt_toclang" title="Upload">Upload
-                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_toclang', fid) )" name="opt_toclang" disabled="false" checked="true" data-dojo-type="dijit/form/CheckBox" /></label>
+                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_toclang', fid) )" name="opt_toclang" disabled="false" checked="false" data-dojo-type="dijit/form/CheckBox" /></label>
                         </td>
                         <td>
                             <label for="opt_sendtestclang" title="Send test">Send test
-                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_sendtestclang', fid) )" name="opt_sendtestclang" title="Send test" disabled="false" checked="true" data-dojo-type="dijit/form/CheckBox" /></label>
+                            <input type="checkbox" tal:attributes="id '_'.join( ('opt_sendtestclang', fid) )" name="opt_sendtestclang" title="Send test" disabled="false" checked="false" data-dojo-type="dijit/form/CheckBox" /></label>
                         </td>
                         <td>
                             <div data-dojo-type="dijit/ProgressBar" style="width:150px; display: none" data-dojo-id="clangProgressBar" id="clangProgressBar" data-dojo-props="maximum:10"></div>
